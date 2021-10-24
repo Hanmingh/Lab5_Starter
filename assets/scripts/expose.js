@@ -24,5 +24,17 @@ function init() {
     }
     sound.volume = v/100;
   });
+
+  const selectHornElement = document.getElementById('horn-select');
+  selectHornElement.addEventListener('change', (event) => {
+    var image = document.querySelector('img');
+    if(`${event.target.value}` == 'air-horn'){
+      image.setAttribute('src', 'assets/images/air-horn.svg');
+    }else if(`${event.target.value}` == 'car-horn'){
+      image.setAttribute('src', 'assets/images/car-horn.svg');
+    }else{
+      image.setAttribute('src', 'assets/images/party-horn.svg');
+    }
+  });
 }
 
