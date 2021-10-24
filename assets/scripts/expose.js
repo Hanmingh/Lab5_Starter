@@ -3,11 +3,12 @@
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
-  const volumnChoose = document.getElementById('volume');
-  var allImg = document.querySelector('img');
+  const allImg = document.querySelectorAll('img');
+  var vChoose = document.getElementById('volume');
+  var sound = document.querySelector("audio");
 
-  volumnChoose.addEventListener('change', (event) => {
-    const v = Number(event.Target.value);
+  vChoose.addEventListener('change', (event) => {
+    const v = Number(event.target.value);
     var vImg = allImg[1];
     if(v === 0){
       vImg.src = 'assets/icons/volume-level-0.svg';
@@ -21,5 +22,7 @@ function init() {
     else{
       vImg.src = 'assets/icons/volume-level-3.svg';
     }
-  })
-  }
+    sound.volume = v/100;
+  });
+}
+
