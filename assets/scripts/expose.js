@@ -28,13 +28,29 @@ function init() {
   const selectHornElement = document.getElementById('horn-select');
   selectHornElement.addEventListener('change', (event) => {
     var image = document.querySelector('img');
+    //let audio = document.getElementById('hidden');
+    let audio = document.querySelector('audio');
     if(`${event.target.value}` == 'air-horn'){
       image.setAttribute('src', 'assets/images/air-horn.svg');
+      audio.setAttribute('src', 'assets/audio/air-horn.mp3');
     }else if(`${event.target.value}` == 'car-horn'){
       image.setAttribute('src', 'assets/images/car-horn.svg');
+      audio.setAttribute('src', 'assets/audio/car-horn.mp3');
     }else{
       image.setAttribute('src', 'assets/images/party-horn.svg');
+      audio.setAttribute('src', 'assets/audio/party-horn.mp3');
     }
+  });
+
+  const button = document.querySelector('button');
+  const jsConfetti = new JSConfetti();
+  button.addEventListener('click', event => {
+    let audio = document.querySelector('audio');
+    audio.volume = sound.volume;
+    if (audio.getAttribute('src') == 'assets/audio/party-horn.mp3') {
+      jsConfetti.addConfetti(); 
+    }
+    audio.play(); 
   });
 }
 
